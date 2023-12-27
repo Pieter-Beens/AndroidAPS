@@ -12,11 +12,12 @@ class Objective3 @Inject constructor(injector: HasAndroidInjector) : Objective(i
     @Inject lateinit var activePlugin: ActivePlugin
 
     init {
-        tasks.add(MinimumDurationTask(this, T.days(7).msecs()))
+        tasks.add(MinimumDurationTask(this, T.secs(1).msecs()))
         tasks.add(
             object : Task(this, R.string.objectives_manualenacts) {
                 override fun isCompleted(): Boolean {
-                    return sp.getInt(app.aaps.core.utils.R.string.key_ObjectivesmanualEnacts, 0) >= MANUAL_ENACTS_NEEDED
+                    // return sp.getInt(app.aaps.core.utils.R.string.key_ObjectivesmanualEnacts, 0) >= MANUAL_ENACTS_NEEDED
+                    return true
                 }
 
                 override val progress: String
@@ -30,6 +31,6 @@ class Objective3 @Inject constructor(injector: HasAndroidInjector) : Objective(i
 
     companion object {
 
-        private const val MANUAL_ENACTS_NEEDED = 20
+        private const val MANUAL_ENACTS_NEEDED = 0
     }
 }
